@@ -1,17 +1,19 @@
-import telebot
+import os
 import random
+import telebot
 from telebot import types
 import webbrowser
+from dotenv import load_dotenv
 
-TOKEN = "BOT_TOKEN"
+# Загружаем переменные из файла .env в систему
+load_dotenv()
+TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
 # ПАМЯТЬ ПОЛЬЗОВАТЕЛЯ
-
 user_state = {}
 
 # ЗАГРУЗКА ФАКТОВ
-
 def load_facts(filename):
     facts_dict = {}
     with open(filename, "r", encoding="utf-8") as file:
