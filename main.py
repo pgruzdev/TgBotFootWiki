@@ -25,16 +25,19 @@ def load_facts(filename):
 ALL_FACTS = {
     "Spain": load_facts("Spain.txt"),
     "England": load_facts("England.txt"),
-    "Italy": load_facts("Italy.txt")
+    "Italy": load_facts("Italy.txt"),
+    "Russia": load_facts("Russia.txt")
 }
-LEAGUES = ["England", "Spain", "Italy"]
+LEAGUES = ["England", "Spain", "Italy", "Russia"]
 SLOGANS = {
     "Juventus": "All the way to the top!",
     "AC Milan": "Milan, Milan, we are the best!",
     "Barcelona": "Visca el Barça i Visca Catalunya!",
     "Real Madrid": "Hala Madrid!",
     "Liverpool": "You'll Never Walk Alone!",
-    "Arsenal": "Come On You Gunners!"
+    "Arsenal": "Come On You Gunners!",
+    "Zenit": "Сине-бело-голубые!",
+    "Spartak Moscow": "Спартак - это любовь!"
 }
 
 def country_menu():
@@ -42,7 +45,8 @@ def country_menu():
     markup.add(
         types.InlineKeyboardButton("🇬🇧 England", callback_data="England"),
         types.InlineKeyboardButton("🇪🇸 Spain", callback_data="Spain"),
-        types.InlineKeyboardButton("🇮🇹 Italy", callback_data="Italy")
+        types.InlineKeyboardButton("🇮🇹 Italy", callback_data="Italy"),
+        types.InlineKeyboardButton("🇷🇺 Russia", callback_data="Russia")
     )
     return markup
 
@@ -57,6 +61,9 @@ def club_menu(league):
     elif league == "Italy":
         markup.add(types.InlineKeyboardButton("🇮🇹 Juventus", callback_data="Juventus"),
                    types.InlineKeyboardButton("🇮🇹 AC Milan", callback_data="AC Milan"))
+    elif league == "Russia":
+        markup.add(types.InlineKeyboardButton("🇷🇺 Zenit", callback_data="Zenit"),
+                   types.InlineKeyboardButton("🇷🇺 CSKA", callback_data="Spartak Moscow"))
     markup.add(types.InlineKeyboardButton("⬅ Назад", callback_data="back_to_leagues"))
     return markup
 
